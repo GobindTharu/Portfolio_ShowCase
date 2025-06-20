@@ -9,9 +9,11 @@ import { jobsController } from "./Controller/jobsController.js";
 
 dotenv.config({});
 
+
 const app = express();
 
 app.use(express.json());
+
 
 app.use(
   cors({
@@ -24,7 +26,8 @@ await connectDB();
 app.use(blogsController);
 app.use(jobsController);
 
-const Port = process.env.PORT || 8000;
+const Port = process.env.PORT || 5000;
+
 app.listen(Port, () => {
   console.log(`App is listening on port ${Port}`);
 });

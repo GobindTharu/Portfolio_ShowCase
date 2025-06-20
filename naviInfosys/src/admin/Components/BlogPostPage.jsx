@@ -131,7 +131,7 @@ export const BlogPostForm = () => {
         {image && (
           <div className="flex justify-center items-center">
             <img
-              className="h-42 w-42 object-cover border-1 "
+              className="h-32 w-32 object-cover border-1 "
               src={URL.createObjectURL(image)}
               alt="Selected"
             />

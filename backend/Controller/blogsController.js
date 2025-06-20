@@ -1,28 +1,20 @@
 import express from "express";
 import { singleUpload } from "../Middleware/multer.js";
-import validateReqBody from "../Middleware/Req.body.validate.js";
+import validateReqBody, {
+  stringParser,
+} from "../Middleware/Req.body.validate.js";
 import BlogsTable from "../Model/blogs.model.js";
 import { blogValidationSchema } from "../Validation/blogs.validation.schema.js";
 import { paginationSchema } from "../Validation/pagination.schema.js";
 
 const router = express.Router();
 
-// Blog Posting
+//? Blog Posting
 
 router.post(
   "/blogs/post",
   singleUpload,
-  (req, res, next) => {
-    // Fix: Convert `seo` from JSON string to object before validation
-    try {
-      if (typeof req.body.seo === "string") {
-        req.body.seo = JSON.parse(req.body.seo);
-      }
-      next();
-    } catch (err) {
-      return res.status(400).json({ message: "Invalid SEO format" });
-    }
-  },
+  stringParser,
   validateReqBody(blogValidationSchema),
   async (req, res) => {
     try {
@@ -66,11 +58,15 @@ router.post(
         content: content.trim(),
         thumbnailImage: thumbnailImage.trim(),
         category,
+        // seo pani dynamic garna sakinxa.
         seo: {
           metaTitle: metaTitle.trim(),
           metaDescription: metaDescription.trim(),
           keywords: normalizedKeywords,
         },
+
+        // author means logged in user of app || here default null
+
         author: req.user?._id || null,
       });
       return res
@@ -83,7 +79,7 @@ router.post(
   }
 );
 
-// All blogs Lists with pagination
+// ?All blogs Lists with pagination
 
 router.post(
   "/blogs/list",
@@ -109,6 +105,7 @@ router.post(
             content: 1,
             thumbnailImage: 1,
             category: 1,
+            author: 1,
             createdAt: 1,
           },
         },

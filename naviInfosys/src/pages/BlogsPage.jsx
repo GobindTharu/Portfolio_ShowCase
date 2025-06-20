@@ -53,7 +53,7 @@ export const BlogsCard = ({ blogs }) => {
           {blogs?.title}
         </h3>
         <p className="text-text-light-secondary dark:text-text-dark-secondary mb-6 text-sm ">
-          {blogs?.content.slice(0, 220)}
+          {blogs?.content.slice(0, 220)}....etc.
         </p>
         <button
           onClick={() => navigate(`/blogs/details/${blogs?._id}`)}
@@ -150,7 +150,6 @@ const BlogsPage = () => {
               )}
             </div>
           </div>
-          {/* // TODO : Remain to pagination in frontend . */}
           <div className="flex justify-center mt-12 gap-6">
             <button
               disabled={currentPage <= 1}

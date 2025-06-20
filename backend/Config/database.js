@@ -1,15 +1,12 @@
 import mongoose from "mongoose";
 import dotenv from "dotenv";
 
-// dotenv.config({});
+dotenv.config({});
 
-const URI =
-  process.env.MONGODB_URI ||
-  "mongodb+srv://mern:mern%40123@school.xg9dy.mongodb.net/NaviInfosys?retryWrites=true&w=majority&appName=School";
+const URI = process.env.MONGODB_URI;
 
 const connectDB = async () => {
   try {
-
     await mongoose.connect(URI);
 
     console.log("Database Connection Successful.");
