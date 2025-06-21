@@ -1,0 +1,38 @@
+# Node modules
+node_modules/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Build directories
+dist/
+build/
+.vite/
+
+# dotenv environment files
+.env
+.env.*   # for .env.local, .env.production, etc.
+
+# OS-specific
+.DS_Store
+Thumbs.db
+
+# IDE-specific
+.vscode/
+.idea/
+
+# Optional: if you're using SQLite or any file-based DB
+*.sqlite
+*.sqlite3
+
+# Production files (e.g., output from deployment tools)
+*.tar
+*.zip
+
+# Uploaded files (adjust as needed)
+uploads/
+public/uploads/
