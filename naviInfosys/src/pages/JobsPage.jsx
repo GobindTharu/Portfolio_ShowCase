@@ -39,7 +39,7 @@ export const Job = ({ jobs }) => {
           <Bookmark />
         </button>
       </div>
-      
+
       {/* //TODO: if here other company posting jobs then we need to handle company  on backend by posting company details  in this case company null default Navi infosys detail*/}
       <div className="flex items-center gap-2 my-2">
         <button className="py-1">
@@ -150,7 +150,7 @@ const JobsPage = () => {
 
         {/* jobs Grid */}
         <section className="py-20 px-4">
-          <div className="max-w-6xl h-[88vh] overflow-y-scroll mx-auto">
+          <div className="max-w-6xl max-h-[88vh] overflow-y-scroll mx-auto">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               {jobs.map((jobs, index) => (
                 <FadeInSection key={index} delay={index * 0.2}>
