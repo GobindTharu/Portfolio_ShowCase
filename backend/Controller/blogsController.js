@@ -1,13 +1,12 @@
 import express from "express";
 import { singleUpload } from "../Middleware/multer.js";
-import validateReqBody, {
-  stringParser,
-} from "../Middleware/Req.body.validate.js";
+import validateReqBody from "../Middleware/Req.body.validate.js";
 import BlogsTable from "../Model/blogs.model.js";
 import { blogValidationSchema } from "../Validation/blogs.validation.schema.js";
 import { paginationSchema } from "../Validation/pagination.schema.js";
 import getDataUri from "../Config/datauri.js";
 import cloudinary from "../Config/cloudinary.js";
+import { validateMongoIdFromReqParams } from "../Middleware/validate.mongo.id.js";
 
 const router = express.Router();
 
@@ -117,7 +116,7 @@ router.post(
   }
 );
 
-//  all blogs list
+//?  all blogs list
 
 router.get("/blogs/list-all", async (req, res) => {
   try {
@@ -146,4 +145,36 @@ router.get("/blogs/list-all", async (req, res) => {
   }
 });
 
+//? Blogs de;lete
+
+router.delete(
+  "/blogs/delete/:id",
+
+  validateMongoIdFromReqParams,
+
+  async (req, res) => {
+    const blogsId = req.params.id;
+
+    await BlogsTable.deleteOne({ _id: blogsId });
+
+    return res.status(200).send({ message: "Blogs is deleted successfully." });
+  }
+);
+router.put(
+  "/blogs/update/:id",
+  validateMongoIdFromReqParams,
+  async (req, res) => {
+    const blogsId = req.params.id;
+    const newValues = req.body;
+
+    await BlogsTable.updateOne(
+      { _id: blogsId },
+      {
+        $set: {
+          ...newValues,
+        },
+      }
+    );
+  }
+);
 export { router as blogsController };

@@ -2,127 +2,128 @@ import express from "express";
 import { JobTable } from "../Model/jobs.model.js";
 import validateReqBody from "../Middleware/Req.body.validate.js";
 import { jobValidationSchema } from "../Validation/jobs.vakidation schenma.js";
-import { validateMongoIdFromReqParams } from "../Model/validate.mongo.id.js";
+import { validateMongoIdFromReqParams } from "../Middleware/validate.mongo.id.js";
 const router = express.Router();
 
+router.post(
+  "/jobs/post",
+  validateReqBody(jobValidationSchema),
+  async (req, res) => {
+    try {
+      const {
+        title,
+        description,
+        requirements,
+        salary,
+        location,
+        jobType,
+        experience,
+        position,
+        category,
+        deadline,
+        offer,
+      } = req.body;
 
-router.post("/jobs/post", validateReqBody(jobValidationSchema),  async (req, res) => {
-  try {
-    const {
-      title,
-      description,
-      requirements,
-      salary,
-      location,
-      jobType,
-      experience,
-      position,
-      category,
-      deadline,
-      offer,
-    } = req.body;
+      if (
+        !title ||
+        !description ||
+        !salary ||
+        !location ||
+        !jobType ||
+        experience == null ||
+        position == null ||
+        !category ||
+        !requirements ||
+        !deadline
+      ) {
+        return res.status(400).json({
+          message: "Some required fields are missing",
+          success: false,
+        });
+      }
 
-    if (
-      !title ||
-      !description ||
-      !salary ||
-      !location ||
-      !jobType ||
-      experience == null ||
-      position == null ||
-      !category ||
-      !requirements ||
-      !deadline
-    ) {
-      return res.status(400).json({
-        message: "Some required fields are missing",
-        success: false,
-      });
-    }
+      const { qualification = "", skills = [] } = requirements;
 
-    const { qualification = "", skills = [] } = requirements;
-
-    const normalizedSkills = Array.isArray(skills)
-      ? skills.map((s) => s.trim().toLowerCase()).filter((s) => s.length > 0)
-      : typeof skills === "string"
-      ? skills
-          .split(",")
-          .map((s) => s.trim().toLowerCase())
-          .filter((s) => s.length > 0)
-      : [];
-
-
-    const duplicateJobs = await JobTable.find({
-      title: title.trim(),
-      description: description.trim(),
-      salary: Number(salary),
-      location: location.trim(),
-      jobType,
-      category,
-      company: req.id || null,
-      experienceLevel: experience,
-      created_by: req.id || null,
-    });
-
-    const isDuplicate = duplicateJobs.some((job) => {
-      const existingSkills = Array.isArray(job.requirements.skills)
-        ? [...job.requirements.skills].map((s) => s.toLowerCase()).sort()
+      const normalizedSkills = Array.isArray(skills)
+        ? skills.map((s) => s.trim().toLowerCase()).filter((s) => s.length > 0)
+        : typeof skills === "string"
+        ? skills
+            .split(",")
+            .map((s) => s.trim().toLowerCase())
+            .filter((s) => s.length > 0)
         : [];
 
-      const newSkills = [...normalizedSkills].sort();
+      const duplicateJobs = await JobTable.find({
+        title: title.trim(),
+        description: description.trim(),
+        salary: Number(salary),
+        location: location.trim(),
+        jobType,
+        category,
+        company: req.id || null,
+        experienceLevel: experience,
+        created_by: req.id || null,
+      });
 
-      return (
-        job.requirements.qualification?.toLowerCase().trim() ===
-          qualification.toLowerCase().trim() &&
-        JSON.stringify(existingSkills) === JSON.stringify(newSkills) &&
-        job.positions === Number(position)
-      );
-    });
+      const isDuplicate = duplicateJobs.some((job) => {
+        const existingSkills = Array.isArray(job.requirements.skills)
+          ? [...job.requirements.skills].map((s) => s.toLowerCase()).sort()
+          : [];
 
-    if (isDuplicate) {
-      return res.status(409).json({
-        message: "This job has already been posted.",
+        const newSkills = [...normalizedSkills].sort();
+
+        return (
+          job.requirements.qualification?.toLowerCase().trim() ===
+            qualification.toLowerCase().trim() &&
+          JSON.stringify(existingSkills) === JSON.stringify(newSkills) &&
+          job.positions === Number(position)
+        );
+      });
+
+      if (isDuplicate) {
+        return res.status(409).json({
+          message: "This job has already been posted.",
+          success: false,
+        });
+      }
+
+      const newJob = await JobTable.create({
+        title: title.trim(),
+        description: description.trim(),
+        requirements: {
+          qualification: qualification.trim(),
+          skills: normalizedSkills,
+        },
+        salary: Number(salary),
+        location: location.trim(),
+        jobType,
+        experienceLevel: experience,
+        positions: Number(position),
+        category,
+        deadline: deadline || null,
+        offer: offer || "",
+        company: req.id || null,
+        created_by: req.id || null,
+      });
+
+      return res.status(201).json({
+        message: "Job created successfully",
+        job: newJob,
+        success: true,
+      });
+    } catch (error) {
+      console.error("Job post error:", error);
+      return res.status(500).json({
+        message: error.message || "Server Error",
         success: false,
       });
     }
-
-    const newJob = await JobTable.create({
-      title: title.trim(),
-      description: description.trim(),
-      requirements: {
-        qualification: qualification.trim(),
-        skills: normalizedSkills,
-
-      },
-      salary: Number(salary),
-      location: location.trim(),
-      jobType,
-      experienceLevel: experience,
-      positions: Number(position),
-      category,
-      deadline: deadline || null,
-      offer: offer || "",
-      company: req.id || null,
-      created_by: req.id || null, 
-    });
-
-    return res.status(201).json({
-      message: "Job created successfully",
-      job: newJob,
-      success: true,
-    });
-  } catch (error) {
-    console.error("Job post error:", error);
-    return res.status(500).json({
-      message: error.message || "Server Error",
-      success: false,
-    });
   }
-});
+);
 
 router.get("/jobs/get-all", async (req, res) => {
   try {
-    const jobs = await JobTable.find().sort({ createdAt: -1 }); 
+    const jobs = await JobTable.find().sort({ createdAt: -1 });
     res.status(200).json({ success: true, jobs });
   } catch (error) {
     console.error("Error fetching jobs:", error);
@@ -130,10 +131,10 @@ router.get("/jobs/get-all", async (req, res) => {
   }
 });
 
-//? this is for detail page get job by id 
+//? this is for detail page get job by id
 
 router.get(
-  "/job/detail/:id",
+  "/jobs/detail/:id",
   validateMongoIdFromReqParams,
   async (req, res) => {
     try {
@@ -155,7 +156,5 @@ router.get(
     }
   }
 );
-
-
 
 export { router as jobsController };
