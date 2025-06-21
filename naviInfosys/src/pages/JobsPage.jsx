@@ -39,6 +39,7 @@ export const Job = ({ jobs }) => {
           <Bookmark />
         </button>
       </div>
+      
       {/* //TODO: if here other company posting jobs then we need to handle company  on backend by posting company details  in this case company null default Navi infosys detail*/}
       <div className="flex items-center gap-2 my-2">
         <button className="py-1">
@@ -101,7 +102,9 @@ const JobsPage = () => {
   useEffect(() => {
     const fetchAllJobs = async () => {
       try {
-        const res = await axios.get("http://localhost:8000/jobs/get-all");
+        const apiUrl = import.meta.env.VITE_API_URL;
+
+        const res = await axios.get(`${apiUrl}/jobs/get-all`);
         console.log("Jobs :", res.data.jobs);
         setJobs(res.data.jobs || []);
       } catch (error) {

@@ -59,7 +59,9 @@ const JobPostForm = () => {
     };
 
     try {
-      const res = await axios.post("http://localhost:8000/jobs/post", payload);
+      const apiUrl = import.meta.env.VITE_API_URL;
+
+      const res = await axios.post(`${apiUrl}/jobs/post`, payload);
       toast.success("Job posted successfully!");
       setForm({
         title: "",

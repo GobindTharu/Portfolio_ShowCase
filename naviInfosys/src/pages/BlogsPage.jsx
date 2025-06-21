@@ -81,7 +81,9 @@ const BlogsPage = () => {
     const fetchAllBlogs = async () => {
       setLoading(true);
       try {
-        const res = await axios.post("http://localhost:8000/blogs/list", {
+        const apiUrl = import.meta.env.VITE_API_URL;
+
+        const res = await axios.post(`${apiUrl}/blogs/list`, {
           page: currentPage,
           limit: 6,
         });

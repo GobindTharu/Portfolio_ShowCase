@@ -45,9 +45,7 @@ export const BlogPostForm = () => {
   const uploadImageToCloudinary = async () => {
     if (!image) return null;
 
-    const cloudName = "dwljdalyg";
-    const cloudinaryUrl = `https://api.cloudinary.com/v1_1/${cloudName}/image/upload`;
-
+    const cloudinaryUrl = import.meta.env.VITE_CLOUD_URL;
     const data = new FormData();
     data.append("file", image);
     data.append("upload_preset", "images_preset");
@@ -89,15 +87,13 @@ export const BlogPostForm = () => {
 
       formData.append("seo", JSON.stringify(seoObject));
 
-      const res = await axios.post(
-        "http://localhost:8000/blogs/post",
-        formData,
-        {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-        }
-      );
+      const apiUrl = import.meta.env.VITE_API_URL;
+
+      const res = await axios.post(`${apiUrl}/blogs/post`, formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
 
       toast.success("Blog posted successfully!");
 
