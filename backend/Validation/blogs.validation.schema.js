@@ -38,24 +38,6 @@ export const blogValidationSchema = yup.object(
 
     author: yup.string().matches(/^[0-9a-fA-F]{24}$/, "Invalid author ID"),
 
-    seo: yup.object({
-      metaTitle: yup.string().nullable(),
-      metaDescription: yup.string().nullable(),
-      keywords: yup
-        .mixed()
-        .test(
-          "is-valid-keywords",
-          "Keywords must be a string or array",
-          (val) => {
-            if (typeof val === "string") return true;
-            if (Array.isArray(val))
-              return val.every((k) => typeof k === "string");
-            return false;
-          }
-        )
-        .notRequired(),
-    }),
-
     likes: yup.number().min(0).notRequired(),
 
     comments: yup.array().of(

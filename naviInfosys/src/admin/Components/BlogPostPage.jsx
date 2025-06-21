@@ -32,39 +32,23 @@ export const BlogPostForm = () => {
     content: "",
     thumbnailImage: null,
     category: "",
-    metaTitle: "",
-    metaDescription: "",
-    keywords: "",
+    file: null,
   });
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setForm((prev) => ({ ...prev, [name]: value }));
   };
-
-  const uploadImageToCloudinary = async () => {
-    if (!image) return null;
-
-    const cloudinaryUrl = import.meta.env.VITE_CLOUD_URL;
-    const data = new FormData();
-    data.append("file", image);
-    data.append("upload_preset", "images_preset");
-
-    try {
-      const res = await axios.post(cloudinaryUrl, data);
-      return res.data.secure_url;
-    } catch (error) {
-      toast.error("Image upload failed");
-      console.error(error);
-      return null;
-    }
+  const handleFileChange = (e) => {
+    const file = e.target.files?.[0];
+    setForm((prev) => ({ ...prev, file: file }));
+    if (file) setImage(file);
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     setIsSubmitting(true);
-    const uploadedImageUrl = await uploadImageToCloudinary();
 
     try {
       const formData = new FormData();
@@ -72,20 +56,9 @@ export const BlogPostForm = () => {
       formData.append("content", form.content);
       formData.append("category", form.category);
 
-      if (uploadedImageUrl) {
-        formData.append("thumbnailImage", uploadedImageUrl);
+      if (form.file) {
+        formData.append("file", form.file);
       }
-
-      const seoObject = {
-        metaTitle: form.metaTitle,
-        metaDescription: form.metaDescription,
-        keywords: form.keywords
-          .split(",")
-          .map((k) => k.trim().toLowerCase())
-          .filter(Boolean),
-      };
-
-      formData.append("seo", JSON.stringify(seoObject));
 
       const apiUrl = import.meta.env.VITE_API_URL;
 
@@ -102,9 +75,6 @@ export const BlogPostForm = () => {
         content: "",
         thumbnailImage: null,
         category: "",
-        metaTitle: "",
-        metaDescription: "",
-        keywords: "",
       });
     } catch (err) {
       toast.error(err?.response?.data?.message || "Something went wrong");
@@ -135,11 +105,8 @@ export const BlogPostForm = () => {
         )}
         <input
           type="file"
-          name="thumbnailImage"
-          onChange={(e) => {
-            const file = e.target.files?.[0];
-            if (file) setImage(file);
-          }}
+          name="file"
+          onChange={handleFileChange}
           accept="image/*"
           className="w-full bg-transparent px-4 py-2 border border-gray-300 rounded-md"
         />
@@ -181,32 +148,7 @@ export const BlogPostForm = () => {
           className="w-full bg-transparent px-4 py-2 border border-gray-300 rounded-md"
           required
         ></textarea>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <input
-            type="text"
-            name="metaTitle"
-            value={form.metaTitle}
-            onChange={handleChange}
-            placeholder="Meta Title"
-            className="w-full bg-transparent px-4 py-2 border border-gray-300 rounded-md"
-          />
-          <input
-            type="text"
-            name="metaDescription"
-            value={form.metaDescription}
-            onChange={handleChange}
-            placeholder="Meta Description"
-            className="w-full bg-transparent px-4 py-2 border border-gray-300 rounded-md"
-          />
-        </div>
-        <input
-          type="text"
-          name="keywords"
-          value={form.keywords}
-          onChange={handleChange}
-          placeholder="SEO Keywords (comma separated)"
-          className="w-full bg-transparent px-4 py-2 border border-gray-300 rounded-md"
-        />
+
         <motion.button
           whileHover={{ scale: 1.03 }}
           whileTap={{ scale: 0.97 }}

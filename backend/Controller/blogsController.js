@@ -6,6 +6,8 @@ import validateReqBody, {
 import BlogsTable from "../Model/blogs.model.js";
 import { blogValidationSchema } from "../Validation/blogs.validation.schema.js";
 import { paginationSchema } from "../Validation/pagination.schema.js";
+import getDataUri from "../Config/datauri.js";
+import cloudinary from "../Config/cloudinary.js";
 
 const router = express.Router();
 
@@ -14,35 +16,29 @@ const router = express.Router();
 router.post(
   "/blogs/post",
   singleUpload,
-  stringParser,
   validateReqBody(blogValidationSchema),
   async (req, res) => {
     try {
-      const { title, content, category, thumbnailImage, seo } = req.body;
+      const { title, content, category } = req.body;
 
+      const file = req.file;
+
+      if (!file) {
+        return res.status(400).json({ message: "Image is missing !!" });
+      }
       if (!title || !content || !category) {
         return res
           .status(400)
           .json({ message: "Some required field are missing" });
       }
 
-      const { metaTitle = "", metaDescription = "", keywords = [] } = seo;
+      const fileUri = getDataUri(file);
 
-      const normalizedKeywords = Array.isArray(keywords)
-        ? keywords
-            .map((s) => s.trim().toLowerCase())
-            .filter((s) => s.length > 0)
-        : typeof keywords === "string"
-        ? keywords
-            .split(",")
-            .map((s) => s.trim().toLowerCase())
-            .filter((s) => s.length > 0)
-        : [];
+      const cloudResponse = await cloudinary.uploader.upload(fileUri.content);
 
       const IsDuplicate = await BlogsTable.findOne({
         title: title.trim(),
         content: content.trim(),
-        thumbnailImage: thumbnailImage.trim(),
         category,
       });
 
@@ -56,14 +52,8 @@ router.post(
       const blogs = await BlogsTable.create({
         title: title.trim(),
         content: content.trim(),
-        thumbnailImage: thumbnailImage.trim(),
         category,
-        // seo pani dynamic garna sakinxa.
-        seo: {
-          metaTitle: metaTitle.trim(),
-          metaDescription: metaDescription.trim(),
-          keywords: normalizedKeywords,
-        },
+        thumbnailImage: cloudResponse.secure_url,
 
         // author means logged in user of app || here default null
 
