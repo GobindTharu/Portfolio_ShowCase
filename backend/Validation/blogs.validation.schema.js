@@ -10,8 +10,6 @@ export const blogValidationSchema = yup.object(
 
     content: yup.string().required("Content is required"),
 
-    thumbnailImage: yup.string(),
-
     category: yup
       .string()
       .required("Category is required")

@@ -26,10 +26,10 @@ const About = () => {
   return (
     <section>
       <Helmet>
-        <title>About Us | Navi Infosys</title>
+        <title>About Us || Bal Gobind Chaudhary</title>
         <meta
           name="description"
-          content="Learn more about Navi Infosys — our mission, vision, and the team behind the innovative solutions. Discover how we empower businesses with cutting-edge technology."
+          content="Learn more about Bal Gobind Chaudhary — our mission, vision, and the team behind the innovative solutions. Discover how we empower businesses with cutting-edge technology."
         />
         <link
           rel="canonical"
@@ -49,7 +49,7 @@ const About = () => {
           <h1 className="text-4xl md:text-6xl font-bold mb-6">
             About{" "}
             <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
-              Navi Infosys
+              US
             </span>
           </h1>
           <p className="text-xl text-text-light-secondary dark:text-text-dark-secondary max-w-3xl mx-auto">
@@ -68,11 +68,11 @@ const About = () => {
               </h2>
               <div className="bg-background-light dark:bg-background-light-dark rounded-2xl p-8 shadow-lg">
                 <p className="text-lg text-text-light-secondary dark:text-text-dark-secondary mb-4">
-                  Navi Infosys is a forward-thinking digital agency that combines
-                  creativity with technical expertise to deliver exceptional
-                  results. Our team of passionate professionals is dedicated to
-                  helping businesses navigate the digital landscape and achieve
-                  their goals.
+                  Forward-thinking digital agency that
+                  combines creativity with technical expertise to deliver
+                  exceptional results. Our team of passionate professionals is
+                  dedicated to helping businesses navigate the digital landscape
+                  and achieve their goals.
                 </p>
                 <p className="text-lg text-text-light-secondary dark:text-text-dark-secondary">
                   Founded with a vision to bridge the gap between traditional

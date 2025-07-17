@@ -76,7 +76,7 @@ const JobDetails = () => {
                       {jobs?.title}
                     </h2>
                     <p className="text-text-light-secondary dark:text-text-dark-secondary">
-                      {jobs?.company?.name || "Navi Infosys"}
+                      {jobs?.company?.name || "Infosys"}
                     </p>
                     <p className="text-sm flex items-center text-text-light-secondary dark:text-text-dark-secondary">
                       <FaMapMarkerAlt className="mr-1" />{" "}
@@ -189,9 +189,8 @@ const JobDetails = () => {
                 <h3 className="text-xl font-bold text-primary mb-3">
                   About Company
                 </h3>
-                <p className="text-text-light-secondary italic">
-                  Not Available
-                </p>
+                <p className="text-text-light-dark italic">Infosys</p>
+                <p>Gangabu, Kathmandu</p>
               </div>
             </FadeInSection>
 

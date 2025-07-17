@@ -1,8 +1,8 @@
 import express from "express";
-import { JobTable } from "../Model/jobs.model.js";
-import validateReqBody from "../Middleware/Req.body.validate.js";
-import { jobValidationSchema } from "../Validation/jobs.vakidation schenma.js";
+import { validateReqBody } from "../Middleware/vakidate.req.body.js";
 import { validateMongoIdFromReqParams } from "../Middleware/validate.mongo.id.js";
+import { JobTable } from "../Model/jobs.model.js";
+import { jobValidationSchema } from "../Validation/jobs.vakidation schenma.js";
 const router = express.Router();
 
 router.post(
@@ -60,8 +60,9 @@ router.post(
         location: location.trim(),
         jobType,
         category,
-        company: req.id || null,
         experienceLevel: experience,
+        
+        company: req.id || null,
         created_by: req.id || null,
       });
 
@@ -102,6 +103,9 @@ router.post(
         category,
         deadline: deadline || null,
         offer: offer || "",
+
+        // not provide in frontend kept defaults
+
         company: req.id || null,
         created_by: req.id || null,
       });
@@ -120,6 +124,7 @@ router.post(
     }
   }
 );
+// ? get all jobs from Database
 
 router.get("/jobs/get-all", async (req, res) => {
   try {
@@ -130,6 +135,7 @@ router.get("/jobs/get-all", async (req, res) => {
     res.status(500).json({ success: false, message: "Server Error" });
   }
 });
+
 
 //? this is for detail page get job by id
 

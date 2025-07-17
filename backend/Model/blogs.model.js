@@ -5,7 +5,7 @@ const blogSchema = new mongoose.Schema({
     type: String,
     required: true,
     trim: true,
-    maxlength: 150,
+    maxlength: 100,
   },
   content: {
     type: String,
@@ -13,6 +13,7 @@ const blogSchema = new mongoose.Schema({
   },
   thumbnailImage: {
     type: String,
+    required: true,
   },
   category: {
     type: String,
@@ -37,14 +38,10 @@ const blogSchema = new mongoose.Schema({
     required: true,
     lowercase: true,
   },
+
   author: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "User",
-  },
-  seo: {
-    metaTitle: { type: String },
-    metaDescription: { type: String },
-    keywords: [String],
   },
   likes: {
     type: Number,
@@ -63,6 +60,8 @@ const blogSchema = new mongoose.Schema({
     default: Date.now,
   },
 });
+
+blogSchema.index({ title: 1, content: 1, category: 1 }, { unique: true });
 
 const BlogsTable = mongoose.model("Blog", blogSchema);
 

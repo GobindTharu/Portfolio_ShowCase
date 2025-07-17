@@ -57,8 +57,8 @@ const OurTeams = () => {
                 </p>
                 <ul className="flex space-x-4 sm:mt-0">
                   {["facebook", "twitter", "github", "dribbble"].map(
-                    (platform, pidx) => (
-                      <li key={pidx}>
+                    (platform, idx) => (
+                      <li key={idx}>
                         <a
                           href="#"
                           className="text-gray-500 hover:text-gray-900 dark:hover:text-white"

@@ -9,16 +9,16 @@ const ContactForm = () => {
     name: "",
     email: "",
     phone: "",
-    topic: "digital-marketing",
+    topic: "Fullstack development",
   });
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
     // Replace these with your actual EmailJS keys
-    const serviceID = "service_q2qeiol";
-    const templateID = "template_a1kb4b4";
-    const userID = "Y_TkueeGCgUGPHdgq";
+    const serviceID = "";
+    const templateID = "";
+    const userID = "";
 
     emailjs
       .send(
@@ -35,7 +35,7 @@ const ContactForm = () => {
       .then(() => {
         toast.success("Appointment booked successfully!");
         setTimeout(() => {
-          window.location.href = "https://contact.naviinfosys.com/thank-you/";
+          window.location.href = "";
         }, 1500);
       })
       .catch(() => {
@@ -60,7 +60,7 @@ const ContactForm = () => {
         className="w-full md:w-[450px] bg-background-light/50 dark:bg-background-light-dark/50 backdrop-blur-lg p-8 rounded-2xl shadow-xl"
       >
         <h3 className="text-2xl font-bold mb-6 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
-          Book Your Free Consultation
+          Will You Need any help
         </h3>
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
@@ -130,7 +130,7 @@ const ContactForm = () => {
                 Social Media Management
               </option>
               <option value="content-creation">Content Creation</option>
-              <option value="video-editing">Video Editing</option>
+              <option value="video-editing">Fullstack Developments</option>
             </select>
           </div>
           <motion.button

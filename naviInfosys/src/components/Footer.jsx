@@ -18,7 +18,6 @@ const Footer = () => {
               />
             </Link>
             <p className="text-text-light-secondary dark:text-text-dark-secondary mb-6 max-w-md">
-              Empowering businesses with innovative digital solutions and
               strategic guidance for sustainable growth in the digital age.
             </p>
             <div className="flex space-x-4">
@@ -87,7 +86,7 @@ const Footer = () => {
 
         <div className="border-t border-text-light-secondary/10 dark:border-text-dark-secondary/10 mt-12 pt-8 text-center text-text-light-secondary dark:text-text-dark-secondary">
           <p>
-            © {new Date().getFullYear()} Navi Infosys. All Rights Reserved.
+            © {new Date().getFullYear()} BalGobind Chaudhary. All Rights Reserved.
             
           </p>
         </div>

@@ -36,6 +36,7 @@ import { Typewriter } from "react-simple-typewriter";
 import { Helmet } from "react-helmet-async";
 import WhatYouGet from "../components/WhatYouGet";
 import FAQ from "../components/Faq";
+import Herosection from "../components/Herosection";
 
 const FadeInSection = ({ children, delay = 0 }) => {
   const [ref, inView] = useInView({
@@ -68,10 +69,10 @@ const Home = () => {
   return (
     <section>
       <Helmet>
-        <title>Navi Infosys</title>
+        <title>Bal Gobind Chaudhary</title>
         <meta
           name="description"
-          content="Welcome to Navi Infosys — Your trusted partner for modern web development, branding, design, and digital innovation. Let's bring your ideas to life."
+          content="Welcome to Our website — Your trusted partner for modern web development, branding, design, and digital innovation. Let's bring your ideas to life."
         />
         <link rel="canonical" href="https://naviinfosys.sarojpanthi.tech/" />
       </Helmet>
@@ -81,7 +82,13 @@ const Home = () => {
         {/* Hero Section with Consultation Form */}
         <section
           id="home"
-          className="relative min-h-screen flex items-center justify-center px-4 pt-20"
+          className="relative max-w-7xl  mx-auto min-h-screen flex items-center justify-center"
+        >
+          <Herosection />
+        </section>
+        <section
+          id="home"
+          className="relative min-h-screen flex items-center justify-center px-4 "
         >
           <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-12">
             {/* Left Content */}
@@ -134,12 +141,12 @@ const Home = () => {
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
               {[
                 { icon: <FaReact />, name: "React" },
-                { icon: <FaWordpress />, name: "WordPress" },
                 { icon: <SiNextdotjs />, name: "Next.js" },
                 { icon: <SiTailwindcss />, name: "Tailwind CSS" },
                 { icon: <SiTypescript />, name: "TypeScript" },
                 { icon: <FaNodeJs />, name: "Node.js" },
                 { icon: <SiMongodb />, name: "MongoDB" },
+                { icon: <FaWordpress />, name: "WordPress" },
                 { icon: <SiPostgresql />, name: "PostgreSQL" },
                 { icon: <SiAdobeillustrator />, name: "Illustrator" },
                 { icon: <SiAdobephotoshop />, name: "Photoshop" },

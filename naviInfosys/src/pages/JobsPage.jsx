@@ -40,7 +40,8 @@ export const Job = ({ jobs }) => {
         </button>
       </div>
 
-      {/* //TODO: if here other company posting jobs then we need to handle company  on backend by posting company details  in this case company null default Navi infosys detail*/}
+      {/*//TODO: if here other company posting jobs then we need to handle company  detail on backend by posting company details  in this case company null default  detail*/}
+     
       <div className="flex items-center gap-2 my-2">
         <button className="py-1">
           <div className="flex items-center justify-center w-16 h-16 border-1 border-gray-400">
@@ -53,7 +54,7 @@ export const Job = ({ jobs }) => {
         </button>
         <div>
           <h1 className="font-medium text-lg ">
-            {jobs?.company?.name || "Navi Infosys"}
+            {jobs?.company?.name || "Infosys"}
           </h1>
           <p className="text-sm text-gray-500 mb-2">
             {jobs?.location || "Baneshwar, Kathamandu"}
@@ -121,7 +122,7 @@ const JobsPage = () => {
   return (
     <section>
       <Helmet>
-        <title>Jobs || Navi Infosys</title>
+        <title>Jobs | Bal Gobind Chaudhary</title>
         <meta name="description" content={jobs?.description} />
         <link
           rel="canonical"
@@ -130,7 +131,7 @@ const JobsPage = () => {
       </Helmet>
 
       <div className="min-h-screen bg-background dark:bg-background-dark text-text dark:text-text-dark">
-        {/* Hero Section */}
+      {/* Hero Section */}
         <section className="py-20 px-4 bg-gradient-to-b from-background-light to-background dark:from-background-light-dark dark:to-background-dark">
           <div className="max-w-6xl mx-auto text-center">
             <FadeInSection>
@@ -150,7 +151,7 @@ const JobsPage = () => {
 
         {/* jobs Grid */}
         <section className="py-20 px-4">
-          <div className="max-w-6xl max-h-[88vh] overflow-y-scroll mx-auto">
+          <div className="max-w-7xl mx-auto">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               {jobs.map((jobs, index) => (
                 <FadeInSection key={index} delay={index * 0.2}>

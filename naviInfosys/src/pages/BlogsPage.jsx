@@ -103,7 +103,7 @@ const BlogsPage = () => {
   return (
     <section>
       <Helmet>
-        <title>Blogs Insights || Navi Infosys</title>
+        <title>Blogs Insights || Bal Gobind Chaudhary</title>
         <meta name="content" content={blogs?.seo?.metaDescription} />
         <link
           rel="canonical"

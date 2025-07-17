@@ -9,10 +9,10 @@ const Contactpage = () => {
   return (
     <section>
       <Helmet>
-        <title>Contact Us | Navi Infosys</title>
+        <title>Contact Us | Bal Gobind Chaudahry</title>
         <meta
           name="description"
-          content="Get in touch with Navi Infosys. We're here to answer your questions, discuss your project ideas, and help you get started with the right tech solutions."
+          content="Get in touch with Us. We're here to answer your questions, discuss your project ideas, and help you get started with the right tech solutions."
         />
         <link
           rel="canonical"

@@ -49,7 +49,7 @@ const WhatYouGet = () => {
           Our{" "}
           <span className=" bg-gradient-to-r from-[#4b70f5] to-[#3dc2ec] text-transparent bg-clip-text">
             {" "}
-            Digital Marketing
+            FullStack development
           </span>{" "}
           Workflow
         </h1>

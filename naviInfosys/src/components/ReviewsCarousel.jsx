@@ -10,7 +10,7 @@ const reviews = [
     name: "Binod Mahato",
     position: "CEO/Founder",
     content:
-      "Navi Infosys is one of the leading website design and development companies in Nepal, backed by a team of highly skilled IT professionals known for their strong understanding, collaboration, and client support throughout every stage of the project. We go beyond just delivering solutions — our commitment continues with reliable follow-up services even after your project is complete.",
+      "One of the leading website design and development companies in Nepal, backed by a team of highly skilled IT professionals known for their strong understanding, collaboration, and client support throughout every stage of the project. We go beyond just delivering solutions — our commitment continues with reliable follow-up services even after your project is complete.",
     image:
       "https://res.cloudinary.com/dm44nnrpm/image/upload/v1744186238/diligentconsultancy_ke9wax.png",
   },
@@ -20,7 +20,7 @@ const reviews = [
     name: "Prashanna Sharma",
     position: "CTO",
     content:
-      "Choosing Navi Infosys was a game-changer for our business. Their expert team not only delivered a visually stunning and high-performing website but also implemented powerful lead generation strategies that helped us attract a large number of students. Within weeks, we saw a noticeable increase in engagement, inquiries, and conversions. Their approach to design, marketing, and automation truly helped us scale and grow our business with confidence.",
+      "Choosing Bal Gobind  was a game-changer for our business. Their expert team not only delivered a visually stunning and high-performing website but also implemented powerful lead generation strategies that helped us attract a large number of students. Within weeks, we saw a noticeable increase in engagement, inquiries, and conversions. Their approach to design, marketing, and automation truly helped us scale and grow our business with confidence.",
     image:
       "https://res.cloudinary.com/dm44nnrpm/image/upload/v1744189963/aeccglobal_vz1gef.png",
   },
@@ -30,7 +30,7 @@ const reviews = [
     name: "Sundar Mani Adhikari",
     position: "Social Media Manager",
     content:
-      "Navi Infosys completely transformed our social media presence. From crafting engaging content to running targeted campaigns, their team managed everything with precision and creativity. We witnessed a significant boost in views, likes, and follower count across all platforms. Their data-driven strategies not only elevated our brand visibility but also played a key role in driving consistent growth for our business.",
+      "They completely transformed our social media presence. From crafting engaging content to running targeted campaigns, their team managed everything with precision and creativity. We witnessed a significant boost in views, likes, and follower count across all platforms. Their data-driven strategies not only elevated our brand visibility but also played a key role in driving consistent growth for our business.",
     image:
       "https://res.cloudinary.com/dm44nnrpm/image/upload/v1744535045/280060445_1100958233968703_2356396032372761368_n-removebg-preview_e1vaih.png",
   },
@@ -40,7 +40,7 @@ const reviews = [
     name: "UK Gurung",
     position: "Owner",
     content:
-      "Navi Infosys played a vital role in scaling our eCommerce business. From optimizing our website for better performance to implementing seamless checkout and marketing funnels, their team delivered beyond expectations. With their expertise in design, development, and digital marketing, we experienced a noticeable increase in traffic, conversions, and overall revenue. Partnering with Navi Infosys was one of the best decisions for our online business.",
+      "They played a vital role in scaling our eCommerce business. From optimizing our website for better performance to implementing seamless checkout and marketing funnels, their team delivered beyond expectations. With their expertise in design, development, and digital marketing, we experienced a noticeable increase in traffic, conversions, and overall revenue. Partnering with you  was one of the best decisions for our online business.",
     image:
       "https://res.cloudinary.com/dm44nnrpm/image/upload/v1744186800/arstudio_ddf5vs.png",
   },
@@ -50,7 +50,7 @@ const reviews = [
     name: "Dharmaraj Neupane",
     position: "CEO/Yoga Teacher",
     content:
-      "Navi Infosys crafted an outstanding website that perfectly captured our brand’s vision. Their team blended creativity with functionality, resulting in a sleek, fast, and user-friendly site. From the initial design to the final launch, everything was handled with professionalism and attention to detail. We've received countless compliments on the look and feel of our website — it's truly a game-changer for our online presence.",
+      "They crafted an outstanding website that perfectly captured our brand’s vision. Their team blended creativity with functionality, resulting in a sleek, fast, and user-friendly site. From the initial design to the final launch, everything was handled with professionalism and attention to detail. We've received countless compliments on the look and feel of our website — it's truly a game-changer for our online presence.",
     image:
       "https://res.cloudinary.com/dm44nnrpm/image/upload/v1744187860/yoga_u7zzfz.png",
   },
@@ -60,7 +60,7 @@ const reviews = [
     name: "Prashanna Sir",
     position: "CFO",
     content:
-      "Collaborating with Navi Infosys was one of the best decisions for our business. From strategic marketing campaigns to a fully functional, visually stunning website — they handled everything seamlessly. Their team understood our goals, communicated effectively, and delivered beyond expectations. Thanks to their combined expertise in web development and digital marketing, we’ve seen a significant boost in traffic, engagement, and overall growth.",
+      "Collaborating with Bal Gobind was one of the best decisions for our business. From strategic marketing campaigns to a fully functional, visually stunning website — they handled everything seamlessly. Their team understood our goals, communicated effectively, and delivered beyond expectations. Thanks to their combined expertise in web development and digital marketing, we’ve seen a significant boost in traffic, engagement, and overall growth.",
     image:
       "https://res.cloudinary.com/dm44nnrpm/image/upload/v1744535771/images__6_-removebg-preview_in5sdj.png",
   },

@@ -79,8 +79,10 @@ const jobSchema = new mongoose.Schema(
       ref: "User",
       
     },
+
+    //  after apply the jobs store loggedInUserId in Array of obj. Application table
     application: [
-      {
+      { 
         type: mongoose.Schema.Types.ObjectId,
         ref: "Application",
       },

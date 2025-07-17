@@ -167,7 +167,7 @@ export default function ContactSection() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.5 }}
       >
-        We're Here To Help
+        I am Here To Help
       </motion.h1>
 
       <motion.p
@@ -187,16 +187,16 @@ export default function ContactSection() {
         transition={{ delay: 0.9 }}
       >
         <h2 className="text-xl font-semibold bg-clip-text text-transparent bg-gradient-to-r from-[#3dc2ec] to-[#4b70f5]">
-          Navi Infosys Pvt. Ltd
+        Bal Gobind Chaudhary.
         </h2>
         <p className="text-text dark:text-text-dark mt-2">
-          Chobhar & Baneshwor, Kathmandu
+          Kapilvastu , Limbini.
         </p>
         <p className="text-text dark:text-text-dark mt-2">
-          Tel: +977- 9861141921, 9803348457
+          Tel: +977- 9916494422
         </p>
         <p className="text-text dark:text-text-dark mt-2">
-          Email: mail@naviinfosys.com
+          Email: gobind9800@gmail.com
         </p>
       </motion.div>
     </div>

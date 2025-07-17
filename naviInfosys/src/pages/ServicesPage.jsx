@@ -174,10 +174,10 @@ const ServicesPage = () => {
   return (
     <section>
       <Helmet>
-        <title>Our Services | Navi Infosys</title>
+        <title>Our Services | Bal Gobind Chaudhary</title>
         <meta
           name="description"
-          content="Explore the wide range of services offered by Navi Infosys — from web development and UI/UX design to branding and digital marketing. Let’s build something great together."
+          content="Explore the wide range of services offered by Us — from web development and UI/UX design to branding and digital marketing. Let’s build something great together."
         />
         <link
           rel="canonical"

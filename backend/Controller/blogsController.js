@@ -1,16 +1,16 @@
 import express from "express";
+import cloudinary from "../Config/cloudinary.js";
+import getDataUri from "../Config/datauri.js";
 import { singleUpload } from "../Middleware/multer.js";
-import validateReqBody from "../Middleware/Req.body.validate.js";
+import { validateReqBody } from "../Middleware/vakidate.req.body.js";
+import { validateMongoIdFromReqParams } from "../Middleware/validate.mongo.id.js";
 import BlogsTable from "../Model/blogs.model.js";
 import { blogValidationSchema } from "../Validation/blogs.validation.schema.js";
 import { paginationSchema } from "../Validation/pagination.schema.js";
-import getDataUri from "../Config/datauri.js";
-import cloudinary from "../Config/cloudinary.js";
-import { validateMongoIdFromReqParams } from "../Middleware/validate.mongo.id.js";
 
 const router = express.Router();
 
-//? Blog Posting
+//? Blog Posting api
 
 router.post(
   "/blogs/post",
@@ -21,34 +21,20 @@ router.post(
       const { title, content, category } = req.body;
 
       const file = req.file;
-
-      if (!file) {
-        return res.status(400).json({ message: "Image is missing !!" });
-      }
-      if (!title || !content || !category) {
+      if (!title || !content || !category || !file) {
         return res
           .status(400)
           .json({ message: "Some required field are missing" });
       }
+      const cloudResponse = await cloudinary.uploader.upload(
+        getDataUri(file).content,
+        {
+          quality: "auto", // auto compress
+          fetch_format: "auto", // use WebP/AVIF if possible
+        }
+      );
 
-      const fileUri = getDataUri(file);
-
-      const cloudResponse = await cloudinary.uploader.upload(fileUri.content);
-
-      const IsDuplicate = await BlogsTable.findOne({
-        title: title.trim(),
-        content: content.trim(),
-        category,
-      });
-
-      if (IsDuplicate) {
-        return res.status(409).json({
-          message: "This blog  has already been posted.",
-          success: false,
-        });
-      }
-
-      const blogs = await BlogsTable.create({
+      await BlogsTable.create({
         title: title.trim(),
         content: content.trim(),
         category,
@@ -60,7 +46,7 @@ router.post(
       });
       return res
         .status(201)
-        .json({ message: "Blogs Creation Successful", blogs, success: true });
+        .json({ message: "Blogs Creation Successful", success: true });
     } catch (error) {
       console.error("Blog creation failed:", error.message);
       res.status(500).json(error.message);
@@ -116,7 +102,7 @@ router.post(
   }
 );
 
-//?  all blogs list
+//?  all blogs list not used yet
 
 router.get("/blogs/list-all", async (req, res) => {
   try {
@@ -145,7 +131,7 @@ router.get("/blogs/list-all", async (req, res) => {
   }
 });
 
-//? Blogs de;lete
+//? Blogs delete
 
 router.delete(
   "/blogs/delete/:id",

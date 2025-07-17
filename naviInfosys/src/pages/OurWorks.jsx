@@ -29,10 +29,10 @@ const OurWorks = () => {
   return (
     <section>
       <Helmet>
-        <title>Our Works | Navi Infosys</title>
+        <title>Our Works | Bal Gobind Chaudhary</title>
         <meta
           name="description"
-          content="Discover the clients and brands that Navi Infosys has successfully partnered with. Explore stories of innovation and digital success."
+          content="Discover the clients and brands that we  has successfully partnered with. Explore stories of innovation and digital success."
         />
         <link
           rel="canonical"
