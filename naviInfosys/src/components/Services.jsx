@@ -11,9 +11,9 @@ const FadeInSection = ({ children, delay = 0 }) => {
   return (
     <motion.div
       ref={ref}
-      initial={{ opacity: 0, y: 50 }}
-      animate={inView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.8, delay }}
+      initial={{ opacity: 0, translateX: "-100%" }}
+      whileInView={{ opacity: 1, translateX: 0 }}
+      transition={{ duration: 2 }}
     >
       {children}
     </motion.div>

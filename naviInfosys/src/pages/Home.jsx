@@ -74,7 +74,7 @@ const Home = () => {
           name="description"
           content="Welcome to Our website — Your trusted partner for modern web development, branding, design, and digital innovation. Let's bring your ideas to life."
         />
-        <link rel="canonical" href="https://naviinfosys.sarojpanthi.tech/" />
+        <link rel="canonical" href="" />
       </Helmet>
 
       <div className="min-h-screen bg-background dark:bg-background-dark text-text dark:text-text-dark overflow-hidden">
@@ -86,49 +86,18 @@ const Home = () => {
         >
           <Herosection />
         </section>
-        <section
-          id="home"
-          className="relative min-h-screen flex items-center justify-center px-4 "
-        >
-          <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-12">
-            {/* Left Content */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="flex-1 text-center md:text-left"
-            >
-              <h1 className="text-4xl md:text-6xl font-bold mb-12 lg:mb-18">
-                <Typewriter
-                  words={[
-                    "We Build Funnels",
-                    "We Generate Leads",
-                    "We Grow Businesses",
-                  ]}
-                  loop={true}
-                  cursor
-                  cursorStyle="|"
-                  typeSpeed={70}
-                  deleteSpeed={50}
-                  delaySpeed={2000}
-                />
-              </h1>
-              <p className="text-xl text-text-light-secondary dark:text-text-dark-secondary mb-8 max-w-2xl">
-                Sales Funnels | Performance Marketing | Lead Generation |
-                Automation | Paid Ads | Website Development | CRM Integration
-              </p>
-            </motion.div>
-
-            {/* Right Form */}
-            <ContactForm />
-          </div>
-        </section>
 
         {/* Services Section */}
         <Services />
 
         {/* Technologies Section */}
         <section className="py-20 px-4">
-          <div className="max-w-6xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, scale: 0 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 2 }}
+            className="max-w-6xl mx-auto"
+          >
             <FadeInSection>
               <h2 className="text-4xl font-bold text-center mb-16">
                 Technologies We{" "}
@@ -165,7 +134,7 @@ const Home = () => {
                 </FadeInSection>
               ))}
             </div>
-          </div>
+          </motion.div>
         </section>
 
         {/* Brand Carousel Section */}

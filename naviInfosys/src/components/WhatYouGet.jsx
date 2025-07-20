@@ -43,9 +43,9 @@ const ServiceItem = ({ number, title }) => (
 
 const WhatYouGet = () => {
   return (
-    <section className=" mx-8 lg:mx-20">
-      <div>
-        <h1 className="text-center text-2xl lg:text-4xl font-semibold mb-10 border-4 p-4 border-[#4b70f5]">
+    <section className=" mx-8 lg:mx-20 lg:my-16">
+      <div className="max-w-7xl mx-auto">
+        <h1 className="text-center text-2xl lg:text-4xl font-semibold mb-10 border-b-2 border-l-2 border-r-2 p-4 border-[#4b70f5]">
           Our{" "}
           <span className=" bg-gradient-to-r from-[#4b70f5] to-[#3dc2ec] text-transparent bg-clip-text">
             {" "}

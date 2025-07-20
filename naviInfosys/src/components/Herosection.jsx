@@ -35,23 +35,27 @@ const Herosection = () => {
 
   return (
     <>
-      <div className="absolute  w-full ">
+      <div className="absolute  w-full top-36 min-h-screen">
         {/* Background Video */}
 
         <motion.div
-          initial="hidden"
-          animate="visible"
+          initial={{ opacity: 0, rotate: 0 }}
+          whileInView={{ opacity: 1, rotate: 360 }}
+          transition={{ duration: 2 }}
           className="flex flex-col  md:flex-row items-center justify-start  w-full z-[20] gap-6 sm:gap-3 md:gap-5 lg:gap-10"
         >
           {/* Left Section */}
           <div className="flex flex-col  sm:ml-0 md:ml-0  justify-center gap-2 sm:gap-5 md:gap-4 text-start md:text-left sm:text-left w-full z-50">
             <motion.div
               variants={slideInFromTop(0.25)}
+              initial={{ opacity: 0, translateX: "-100%" }}
+              whileInView={{ opacity: 1, translateX: 0 }}
+              transition={{ duration: 2 }}
               className="w-[200px] sm:w-[260px] md:w-[300px] py-[6px] sm:py-[8px] px-[4px] border rounded-xl border-[#7042f88b] opacity-[0.9] mx-auto md:mx-0"
             >
               <span className="flex items-center justify-start">
                 <SparklesIcon className="w-5 sm:w-6 md:w-7 h-5 sm:h-6 md:h-7 mr-2 sm:mr-3  text-[#8e63f1]" />
-                <h1 className="text-[12px] sm:text-[14px] md:text-[16px] xs:text-[333px] text-center  text-gray-200 sm:text-center">
+                <h1 className="text-[12px] sm:text-[14px] md:text-[16px] xs:text-[333px] text-center  dark:text-gray-200 sm:text-center text-violet-800">
                   Fullstack Developer Portfolio
                 </h1>
               </span>
@@ -59,6 +63,9 @@ const Herosection = () => {
 
             <motion.div
               variants={slideInFromTop(0.5)}
+              initial={{ opacity: 0, translateX: "-100%" }}
+              whileInView={{ opacity: 1, translateX: 0 }}
+              transition={{ duration: 2 }}
               className="my-3 sm:my-4 md:my-5 z-[10]"
             >
               <h2 className="Welcome-text uppercase tracking-wide text-base sm:text-lg md:text-md lg:text-xl text-purple-500 text-center md:text-left">
@@ -71,6 +78,9 @@ const Herosection = () => {
 
             <motion.div
               variants={slideInFromLeft(0.75)}
+              initial={{ opacity: 0, translateX: "-100%" }}
+              whileInView={{ opacity: 1, translateX: 0 }}
+              transition={{ duration: 2 }}
               className="flex flex-col gap-6 mt-3 text-6xl font-bold text-white max-w-[7000px] sm:max-w-[600px] w-auto h-auto"
             >
               <span className="text-violet-800 ">
@@ -113,9 +123,12 @@ const Herosection = () => {
 
             <motion.div
               variants={slideInFromLeft(1)}
+              initial={{ opacity: 0, translateX: "-100%" }}
+              whileInView={{ opacity: 1, translateX: 0 }}
+              transition={{ duration: 2 }}
               className="flex flex-col mt-3 mb-0 text-3xl font-bold text-white max-w-[600px] w-auto h-auto"
             >
-              <span>
+              <span className="text-violet-500">
                 I&apos;m
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-cyan-500">
                   {" "}
@@ -126,7 +139,10 @@ const Herosection = () => {
 
             <motion.p
               variants={slideInFromLeft(1.25)}
-              className="text-lg text-gray-300 my-5 max-w-[600px]"
+              initial={{ opacity: 0, translateX: "-100%" }}
+              whileInView={{ opacity: 1, translateX: 0 }}
+              transition={{ duration: 2 }}
+              className="text-lg dark:text-gray-300 my-5 max-w-[600px]"
             >
               Full Stack Software Developer with experience in MERN Stack
               Developer.
@@ -135,6 +151,9 @@ const Herosection = () => {
 
             <motion.div
               variants={slideInFromLeft(1.75)}
+              initial={{ opacity: 0, translateX: "-100%" }}
+              whileInView={{ opacity: 1, translateX: 0 }}
+              transition={{ duration: 2 }}
               className="flex mx-auto md:mx-0 gap-5"
             >
               <Button1 startWriting={startWriting} />
@@ -145,6 +164,9 @@ const Herosection = () => {
           {/* Right Section */}
           <motion.div
             variants={slideInFromRight(1.5)}
+            initial={{ opacity: 0, translateX: "-100%" }}
+            whileInView={{ opacity: 1, translateX: 0 }}
+            transition={{ duration: 2 }}
             className="relative flex top-0 flex-col sm:flex-row items-center justify-center w-full p-4 sm:p-6 lg:p-8"
           >
             <Profile />

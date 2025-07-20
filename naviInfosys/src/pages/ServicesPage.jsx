@@ -181,7 +181,7 @@ const ServicesPage = () => {
         />
         <link
           rel="canonical"
-          href="https://naviinfosys.sarojpanthi.tech/services"
+          href="services"
         />
       </Helmet>
 

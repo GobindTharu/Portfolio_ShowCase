@@ -171,11 +171,11 @@ export default function WorkflowComponent() {
 
   return (
     <div
-      className="bg-background dark:bg-background-dark text-text dark:text-text-dark py-16 px-4 lg:px-8"
+      className=" bg-background dark:bg-background-dark text-text dark:text-text-dark py-16 px-4 lg:px-8"
       ref={containerRef}
     >
       <motion.div
-        className="max-w-6xl mx-auto"
+        className="max-w-7xl mx-auto"
         variants={containerVariants}
         initial="hidden"
         animate={isInView ? "visible" : "hidden"}
@@ -188,14 +188,14 @@ export default function WorkflowComponent() {
             animate={{ opacity: 1 }}
             transition={{ duration: 1 }}
           >
-            <h1 className="text-center text-2xl lg:text-4xl font-semibold mb-10 border-4 p-4 border-[#4b70f5]">
-          Our{" "}
-          <span className=" bg-gradient-to-r from-[#4b70f5] to-[#3dc2ec] text-transparent bg-clip-text">
-            {" "}
-            Web Development
-          </span>{" "}
-          Journey
-        </h1> 
+            <h1 className="text-center text-2xl lg:text-4xl font-semibold mb-10  border-b-2 border-l-2 border-r-2 p-4 border-[#4b70f5]">
+              Our{" "}
+              <span className=" bg-gradient-to-r from-[#4b70f5] to-[#3dc2ec] text-transparent bg-clip-text">
+                {" "}
+                Web Development
+              </span>{" "}
+              Journey
+            </h1>
           </motion.h2>
           <motion.h3
             className="text-2xl font-semibold mb-4"
@@ -210,9 +210,7 @@ export default function WorkflowComponent() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1, delay: 0.4 }}
-          >
-            
-          </motion.p>
+          ></motion.p>
         </motion.div>
 
         {/* Connected Process Flow */}

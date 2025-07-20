@@ -33,7 +33,7 @@ const About = () => {
         />
         <link
           rel="canonical"
-          href="https://naviinfosys.sarojpanthi.tech/about"
+          href="about"
         />
       </Helmet>
 

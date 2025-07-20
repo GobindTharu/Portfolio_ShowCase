@@ -126,7 +126,7 @@ const JobsPage = () => {
         <meta name="description" content={jobs?.description} />
         <link
           rel="canonical"
-          href="https://naviinfosys.sarojpanthi.tech/jobs"
+          href="jobs"
         />
       </Helmet>
 

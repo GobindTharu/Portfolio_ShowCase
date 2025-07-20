@@ -1,7 +1,7 @@
-import React, { useCallback } from "react";
-import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
-import { motion } from "framer-motion";
+import useEmblaCarousel from "embla-carousel-react";
+import { delay, motion } from "framer-motion";
+import { useCallback } from "react";
 
 const reviews = [
   {
@@ -64,7 +64,6 @@ const reviews = [
     image:
       "https://res.cloudinary.com/dm44nnrpm/image/upload/v1744535771/images__6_-removebg-preview_in5sdj.png",
   },
-
 ];
 
 const ReviewsCarousel = () => {
@@ -86,7 +85,12 @@ const ReviewsCarousel = () => {
   }, [emblaApi]);
 
   return (
-    <div className="py-16 bg-background-light dark:bg-background-light-dark">
+    <motion.div
+      initial={{ opacity: 0, translateY: "100%" }}
+      whileInView={{ opacity: 1, translateY: 0 }}
+      transition={{ duration: 2 }}
+      className="py-16 bg-background-light dark:bg-background-light-dark"
+    >
       <div className="container mx-auto px-4">
         <h2 className="text-3xl font-bold text-center mb-12">
           What Our{" "}
@@ -187,7 +191,7 @@ const ReviewsCarousel = () => {
           </button>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

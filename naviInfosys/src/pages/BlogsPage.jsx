@@ -107,7 +107,7 @@ const BlogsPage = () => {
         <meta name="content" content={blogs?.seo?.metaDescription} />
         <link
           rel="canonical"
-          href="https://naviinfosys.sarojpanthi.tech/blogs"
+          href="blogs"
         />
       </Helmet>
 

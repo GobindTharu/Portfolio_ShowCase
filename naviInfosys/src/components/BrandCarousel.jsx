@@ -2,6 +2,7 @@ import React, { useCallback } from "react";
 import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
 import { brands } from "../utils/crouselbrands";
+import { motion } from "framer-motion";
 
 const BrandCarousel = () => {
   const [emblaRef, emblaApi] = useEmblaCarousel(
@@ -22,8 +23,13 @@ const BrandCarousel = () => {
   }, [emblaApi]);
 
   return (
-    <div className="py-12 bg-background">
-      <div className="container mx-auto px-4">
+    <div className="py-12 dark:bg-background ">
+      <motion.div
+        initial={{ opacity: 0, translateX: "100%" }}
+        whileInView={{ opacity: 1, translateX: 0 }}
+        transition={{ duration: 2 }}
+        className="container mx-auto px-4"
+      >
         <h2 className="text-3xl font-bold text-center mb-8">Our Partners</h2>
         <div className="relative">
           <div className="overflow-hidden" ref={emblaRef}>
@@ -88,7 +94,7 @@ const BrandCarousel = () => {
             </svg>
           </button>
         </div>
-      </div>
+      </motion.div>
     </div>
   );
 };

@@ -18,11 +18,11 @@ const Profile = () => {
   const [isHovering, setIsHovering] = useState(false);
 
   return (
-    <div className="flex justify-center items-start mt-16 h-[300px] relative p-2">
+    <motion.div className="flex justify-center items-start mt-16 h-[300px] relative p-2">
       <motion.div
         variants={swingAnimation}
         animate={!isHovering ? "animate" : undefined}
-        className="absolute top-16 rotate-180 flex flex-col items-center md:w-82 md:h-82 w-48 h-48 "
+        className="absolute top-150 rotate-180 flex flex-col items-center md:w-82 md:h-82 w-48 h-48 "
         style={{
           transformOrigin: "top center",
         }}
@@ -30,7 +30,7 @@ const Profile = () => {
         <img
           src="./rope.png"
           alt="rote"
-          className="rotate-90 w-full h-full object-cover"
+          className="absolute -rotate-90 w-full h-full object-cover"
         />
       </motion.div>
 
@@ -41,7 +41,7 @@ const Profile = () => {
         onMouseLeave={() => setIsHovering(false)}
         whileHover={{ scale: 1.03 }}
         transition={{ duration: 0.5 }}
-        className="relative flex flex-col items-center  h-92 rounded-lg border-4 border-white shadow-lg bg-white overflow-hidden"
+        className="relative flex flex-col items-center  h-62 rounded-lg border-4 border-white shadow-lg bg-white overflow-hidden"
         style={{
           transformOrigin: "top center",
         }}
@@ -60,7 +60,7 @@ const Profile = () => {
           Bal Gobind Chaudhary
         </h1>
       </motion.div>
-    </div>
+    </motion.div>
   );
 };
 

@@ -36,7 +36,7 @@ const OurWorks = () => {
         />
         <link
           rel="canonical"
-          href="https://naviinfosys.sarojpanthi.tech/our-works"
+          href="our-works"
         />
       </Helmet>
       <div className="min-h-screen bg-background dark:bg-background-dark text-text dark:text-text-dark pt-20">
