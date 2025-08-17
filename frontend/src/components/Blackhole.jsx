@@ -28,7 +28,7 @@ void main() {
 }
 `;
 
-/** Fragment shader — smoke-like red/green blackhole */
+/** Fragment shader — smoke-like red/green blackhole fragmanets */
 const frag = `
 precision highp float;
 uniform vec2 u_res;
